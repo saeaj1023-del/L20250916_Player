@@ -4,37 +4,71 @@
 
 using namespace std;
 
-
 int main()
 {
-	int PlayerX = 0;
-	int PlayerY = 0;
-	bool bIsRunning = true;
+	int PlayerX = 1;
+	int PlayerY = 1;
+	char PlayerShape = 'P';
 
-	int ObjectX[100];
-	int ObjectY[100];
-	char ObjectShape[100];
+	int Map[10][10] = {
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	};
 
-	int Object01X = 0;
-	int Object01Y = 0;
-	char Object01Shape = '/';
+	while (true)
+	{
+		int KeyCode = _getch();
 
-	int Object02X = 0;
-	int Object02Y = 0;
-	char Object02Shape = '?';
+		if (KeyCode == 'w')
+		{
+			PlayerY--;
+		}
+		else if (KeyCode == 's')
+		{
+			PlayerY++;
+		}
+		else if (KeyCode == 'a')
+		{
+			PlayerX--;
+		}
+		else if (KeyCode == 'd')
+		{
+			PlayerX++;
+		}
 
-	int Object03X = 0;
-	int Object03Y = 0;
-	char Object03Shape = '#';
+		system("cls");
 
-	int Object04X = 0;
-	int Object04Y = 0;
-	char Object04Shape = '%';
-
-	//위치변경
-	cout << Object01Shape << endl;
-	cout << Object02Shape << endl;
-	cout << Object03Shape << endl;
-	cout << Object04Shape << endl;
-	return 0;
+		// Y가 10보다 작을 때까지 반복
+		for (int Y = 0; Y < 10; ++Y)
+		{
+			for (int X = 0; X < 10; ++X)
+			{
+				// 플레이어의 좌표가 같은지 확인
+				if (PlayerX == X && PlayerY == Y)
+				{
+					cout << PlayerShape;
+				}
+				else if (Map[Y][X] == 0)
+				{
+					//0을 공백으로 만들기
+					cout << ' ';
+				}
+				
+				else if (Map[Y][X] == 1)
+				{
+					//1을 *로 만들기
+					cout << '*';
+				}
+			}
+			cout << '\n';
+		}
+	}
 }
