@@ -56,6 +56,8 @@ int main()
 				{
 					cout << PlayerShape;
 				}
+				// 플레이어의 좌표가 다를 때
+				// 맵의 값이 0인지 1인지 확인
 				else if (Map[Y][X] == 0)
 				{
 					//0을 공백으로 만들기
