@@ -9,26 +9,36 @@ int main()
 	int PlayerX = 0;
 	int PlayerY = 0;
 
-	int KeyCode = _getch();
+	while (true)
+	{
+		int KeyCode = _getch();
 
-	if (KeyCode == 'w')
-	{
-		PlayerY--;
-	}
-	else if (KeyCode == 's')
-	{
-		PlayerY++;
-	}
-	else if (KeyCode == 'a')
-	{
-		PlayerX--;
-	}
-	else if (KeyCode == 'd')
-	{
-		PlayerX++;
+		if (KeyCode == 'w')
+		{
+			PlayerY--;
+		}
+		else if (KeyCode == 's')
+		{
+			PlayerY++;
+		}
+		else if (KeyCode == 'a')
+		{
+			PlayerX--;
+		}
+		else if (KeyCode == 'd')
+		{
+			PlayerX++;
+		}
+		system("cls");
+
+		COORD Cur;
+		Cur.X = PlayerX;
+		Cur.Y = PlayerY;
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+
+		cout << "P" << endl;
 	}
 
-	cout << "P" << endl;
 
 	return 0;
 }
